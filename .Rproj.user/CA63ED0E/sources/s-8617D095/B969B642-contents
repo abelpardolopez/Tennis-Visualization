@@ -1,0 +1,137 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This notebook is to explore and *prepare visualization* of the data set.
+
+```{r libraries, echo=FALSE}
+library(dplyr,quietly=TRUE, warn.conflicts = FALSE)
+library(data.table,quietly=TRUE, warn.conflicts = FALSE)
+library(reshape2,quietly=TRUE, warn.conflicts = FALSE)
+library(tidyr,quietly=TRUE, warn.conflicts = FALSE)
+library(lubridate,quietly=TRUE, warn.conflicts = FALSE)
+library(ggplot2,quietly=TRUE, warn.conflicts = FALSE)
+library(readr,quietly=TRUE, warn.conflicts = FALSE)
+library(tibble,quietly=TRUE, warn.conflicts = FALSE)
+library(magrittr,quietly=TRUE, warn.conflicts = FALSE)
+library(stringr,quietly=TRUE, warn.conflicts = FALSE)
+library(forcats,quietly=TRUE, warn.conflicts = FALSE)
+```
+
+# Load file
+
+```{r read_data, echo=TRUE}
+setwd("C:/Users/ABEL/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data")
+
+data <- read_csv("./data/results/allTennisMatch_20180515.csv", 
+                 col_types = list(
+                        Year=col_integer(),
+                        WRank=col_integer(),
+                        LRank=col_integer(),
+                        Surface=col_character(),
+                        Sex=col_character()))
+
+```
+
+Prepare to analyze
+```{r}
+#╔data$SexF <-   factor(data$Sex)
+#data$SurfaceF <- factor(data$Surface)
+
+#data$WRankF <- factor(data$WRank)
+#data$WRankFG <- fct_lump(data$WRankF, n  = 100)
+
+#data %<>% select(-WRank, -WRankF)
+#data %<>% select(-Sex, -SurfaceF)
+
+#colnames(data) <- c("Surface", "Year", "Sex", "WRank")
+```
+
+```{r}
+
+#total <- data %>% select (-Year, -Surface) %>% table() %>% data.frame()# %>% ftable()
+```
+
+# Show Image
+
+```{r}
+data %>% filter(WRank < 100) %>%
+        ggplot(aes(WRank, fill =  Sex )) + 
+        geom_histogram(binwidth = 1, position = "dodge") 
+data %>% filter(LRank < 100) %>%
+        ggplot(aes(LRank, fill = Sex )) + 
+        geom_histogram(binwidth = 1, position = "dodge") 
+```
+
+```{r}
+table(data$Sex)
+table(data$Surface)
+```
+```{r}
+win_by_rank <- data %>% group_by(WRank) %>% summarise(W = n()) 
+colnames(win_by_rank) = c("Rank", "W")
+head(win_by_rank)
+lost_by_rank <- data %>% group_by(LRank) %>% summarise(L = n())  
+colnames(lost_by_rank) = c("Rank", "L")
+head(lost_by_rank)
+by_rank = inner_join(win_by_rank, lost_by_rank, by = "Rank")
+
+by_rank %<>%  mutate(T = L+W, P = W/T) %>% filter (T > 100)
+head(by_rank)
+
+by_rank %>% 
+        filter (Rank < 100) %>% 
+        ggplot(aes(Rank, P)) + geom_line() + geom_smooth()
+
+```
+```{r}
+win_by_rank_sex <- data %>% group_by(WRank, Sex) %>% summarise(W = n()) %>% ungroup()
+colnames(win_by_rank_sex) = c("Rank","Sex", "W")
+head(win_by_rank_sex)
+lost_by_rank_sex <- data %>% group_by(LRank, Sex) %>% summarise(L = n())  %>% ungroup()
+colnames(lost_by_rank_sex) = c("Rank", "Sex", "L")
+head(lost_by_rank_sex)
+by_rank_sex <- inner_join(win_by_rank_sex, lost_by_rank_sex, by = c("Rank", "Sex"))
+head(by_rank_sex)
+by_rank_sex %<>%  mutate(T = L+W, P = W/T) #%>% filter (T > 100)
+#head(by_rank)
+
+by_rank_sex %>% 
+        filter (Rank < 100) %>% 
+        ggplot(aes(Rank, P, color = Sex)) + geom_line() + geom_smooth()
+
+```
+```{r}
+by_rank_sex %>% select (-W, -L, -T) %>% spread(key = "Sex", value = "P") %>% write_csv("./probabilit_win_by_rank_sex.csv")
+```
+
+```{r}
+data %>%
+        ggplot(aes(x = Surface, fill = Sex)) + geom_histogram(stat = "count", position = "dodge") 
+
+```
+
+```{r}
+data %>% filter(Sex == "M") %>%
+        ggplot(aes(x = Year, y=..count.., fill = Surface)) + geom_histogram(binwidth = 1) + facet_grid(Surface~.) + 
+        scale_x_continuous(breaks=c(2000,2002,2004,2006,2008,2010,2012,2014,2016,2018))
+data %>% filter(Sex == "W") %>%
+        ggplot(aes(x = Year, y=..count.., fill = Surface)) + geom_histogram(binwidth = 1) + facet_grid(Surface~.)  + 
+        scale_x_continuous(breaks=c(2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018))
+```
+
+```{r}
+surfaces <- data %>% select(Sex, Year, Surface) %>% group_by(Sex,  Surface, Year) %>% summarise(count = n()) %>% ungroup() %>% 
+        spread(key = Surface, value = "count", fill = 0 ) 
+head(surfaces, 20)
+write_csv(surfaces, "./matches_by_surface_and_sex.csv")
+
+```
+```{r}
+data %>% select(Sex, Year, Surface) %>% group_by(Sex,  Surface, Year) %>% summarise(count = n()) %>% ungroup() %>% filter(Year < 2018, Year > 2006) %>%
+        ggplot(aes(Year, count, color = Surface)) +
+        geom_line() +
+        facet_grid(.~Sex) 
+```
+

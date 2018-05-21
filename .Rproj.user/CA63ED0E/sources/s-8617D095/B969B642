@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1526413393894.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B969B642",
+    "lastKnownWriteTime" : 1526894765,
+    "last_content_update" : 1526894826479,
+    "path" : "C:/Users/ABEL/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data/analyses_tennis_v01.Rmd",
+    "project_path" : "analyses_tennis_v01.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "137,0",
+        "scrollLine" : "130",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,7 @@
+"0","data$SexF <-   factor(data$Sex)"
+"0","data$SurfaceF <-   factor(data$Surface)"
+"0","data$WRankF <- factor(data$WRank)"
+"0","data$WRankFG <- fct_lump(data$WRankF, n  = 100)"
+"0","data %<>% select(-WRank, -WRankF)"
+"0","data %<>% select(-Sex, -SurfaceF)"
+"0","colnames(data) <- c(""Surface"", ""Year"", ""Sex"", ""WRank"")"

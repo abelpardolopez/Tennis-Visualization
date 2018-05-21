@@ -1,0 +1,8 @@
+"0","setwd(""C:/Users/ABEL/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data"")"
+"0","data <- read_csv(""./data/results/allTennisMatch_20180515.csv"", "
+"0","                 col_types = list("
+"0","                        Year=col_integer(),"
+"0","                        WRank=col_integer(),"
+"0","                        LRank=col_integer(),"
+"0","                        Surface=col_character(),"
+"0","                        Sex=col_character()))"

@@ -1,0 +1,21 @@
+[0m[0K]0;:/c/Users/ABEL/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[?25l
+[0;32mABEL@ABEL-PC [0;35m [0;33m~/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[0m[0K
+$[0K[3G[?25h[?25l$ i[0K[?25hn[0Kt[0K[?25l$ in[0K[?25hs[0Kt[0Ka[0Kl[0Kl[0K.[0Kp[0Ka[0Kc[0Kk[0Ka[0Kt[0K[?25l$ install.packa[0K[?25hg[0Ke[0Ks[0K([0K'[0Kh[0Kt[0Km[0Kl[0Kt[0Ko[0Ko[0Kl[0Ks[0K'[0K[?25l)[0K[31G[?25h[32G[?25l
+bash: syntax error near unexpected token `'htmltools''[0K
+[0K
+[0;32mABEL@ABEL-PC [0;35m [0;33m~/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[0m[0K
+$[0K[3G[?25h[?25l$ install.packages('htmltools')[0K[?25h[31G[30G[29G[28G[27G[26G[25G[23G[21G[?25l$ install.packages(htmltools')[0K[20G[?25h[?25l$ install.packages('htmltools')[0K[21G[?25h[32G[31G[?25l$ install.packages('htmltools)[0K[30G[?25h[?25l$ install.packages('htmltools')[0K[31G[?25h[?25l
+bash: syntax error near unexpected token `'htmltools''[0K
+[0K
+[0;32mABEL@ABEL-PC [0;35m [0;33m~/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[0m[0K
+$[0K[3G[?25h[?25l$ install.packages('htmltools')[0K[?25h[31G[30G[29G[28G[27G[26G[24G[23G[22G[21G[20G[19G[18G[32G[?25l$ install.packages('htmltools'[0K[?25h[?25l$ install.packages('htmltools[0K[?25h[?25l$ install.packages('htmltool[0K[?25h[?25l$ install.packages('htmltoo[0K[?25h[?25l$ install.packages('htmlto[0K[?25h[?25l$ install.packages('htmlt[0K[?25h[?25l$ install.packages('html[0K[?25h[?25l$ install.packages('htm[0K[?25h[?25l$ install.packages('ht[0K[?25h[?25l$ install.packages('h[0K[?25h[?25l$ install.packages('[0K[?25h[?25l$ install.packages([0K[?25h"[0Kh[0Kt[0Km[0Kl[0Kt[0Ko[0Ko[0Kl[0Ks[0K"[0K)[0K[?25l
+bash: syntax error near unexpected token `"htmltools"'[0K
+[0K
+[0;32mABEL@ABEL-PC [0;35m [0;33m~/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[0m[0K
+$[0K[3G[?25h[?25l$ install.packages("htmltools")[0K[?25h[31G[30G[?25l$ install.packages("htmltool")[0K[29G[?25h[?25l$ install.packages("htmltoo")[0K[28G[?25h[?25l$ install.packages("htmlto")[0K[27G[?25h[?25l$ install.packages("htmlt")[0K[27G[?25h[26G[?25l$ install.packages("html")[0K[25G[?25h[?25l$ install.packages("htm")[0K[24G[?25h[?25l$ install.packages("ht")[0K[23G[?25h[?25l$ install.packages("h")[0K[22G[?25h[?25l$ install.packages("")[0K[21G[?25h[?25l$ install.packages("b")[0K[22G[?25h[?25l$ install.packages("ba")[0K[23G[?25h[?25l$ install.packages("bac")[0K[24G[?25h[?25l$ install.packages("back")[0K[24G[?25h[25G[?25l$ install.packages("backp")[0K[26G[?25h[?25l$ install.packages("backpo")[0K[27G[?25h[?25l$ install.packages("backpor")[0K[27G[?25h[28G[?25l$ install.packages("backport")[0K[29G[?25h[?25l$ install.packages("backports")[0K[30G[?25h[?25l
+bash: syntax error near unexpected token `"backports"'[0K
+[0K
+[0;32mABEL@ABEL-PC [0;35m [0;33m~/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[0m[0K
+]0;:/c/Users/ABEL/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[?25l
+[0;32mABEL@ABEL-PC [0;35m [0;33m~/Desktop/BigData/ExCourse/03-Data_Visualization/proyecto/data[0m[0K
+$[0K[3G[?25h
