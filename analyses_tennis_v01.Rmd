@@ -1,6 +1,10 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
 ---
 
 This notebook is to explore and *prepare visualization* of the data set.
@@ -123,8 +127,9 @@ data %>% filter(Sex == "W") %>%
 
 ```{r}
 surfaces <- data %>% select(Sex, Year, Surface) %>% group_by(Sex,  Surface, Year) %>% summarise(count = n()) %>% ungroup() %>% 
-        spread(key = Surface, value = "count", fill = 0 )
+        spread(key = Surface, value = "count", fill = 0 ) 
 head(surfaces, 20)
+write_csv(surfaces, "./matches_by_surface_and_sex.csv")
 
 ```
 ```{r}
