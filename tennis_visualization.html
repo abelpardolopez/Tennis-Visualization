@@ -3,6 +3,7 @@
   	<!-- Charset and load required libraries -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
     <style>
       /* Title */
       h2 {
@@ -20,11 +21,14 @@
     </style>
 
     <script type="text/javascript">
-  /*      "use strict"; // We must declare all variables
-       var margin = 50,
-           width = 700 - margin,
-           height = 450 - margin;
-
+      "use strict"; // To force the declaration of all variables
+      var margin = 50,
+	      width = 700 - margin,
+          height = 450 - margin
+      function draw_figures(data1, data2) {
+         draw_probability(data1);
+         matches_line_plot(data2);
+      };
       function draw_probability(data) {
           var svg = d3.select("body")
             .append("svg")
@@ -46,27 +50,27 @@
 		        .text("With Higher rank higher propbability of winning the match.");
 
         // Create main x and y axis and assign titles and numeric format
-         var x = myChart.addMeasureAxis("x", "Rank");
-          x.title = "Rank";
+         var x = myChart.addCategoryAxis("x", "Rank");
+          x.title = "WTA or ATP Rank";
           //x.tickFormat = ',d'; //  Integer
           var y = myChart.addMeasureAxis("y", "M");
           y.title = "Probability of winning a match";
-          y.tickFormat = ',.2f'; // Two decimal places
+          //y.tickFormat = ',.2f'; // Two decimal places
 
         //  var z = myChart.addMeasureAxis("z", "W");
 
           myChart.addSeries("Rank", dimple.plot.line);
         //  myChart.addSeries("Women probability of Win", dimple.plot.line);
-          myChart.assignColor("Rank", "red");
-        //  myChart.assignColor("Male probability of Win", "blue");
+          //myChart.assignColor("Women probability of Win", "red");
+          myChart.assignColor("Male probability of Win", "blue");
 
           myChart.addLegend(500, 50, 100, 100, "left");
 
           myChart.draw();
-      };*/
+      };
 
       /* Plot number of matches for each sufrface type and sex*/
-     /* function matches_line_plot(data) {
+      function matches_line_plot(data) {
           var svg = d3.select("body")
             .append("svg")
               .attr("width", width + margin)
@@ -87,8 +91,6 @@
 		        .text("Number of matches by surface type and sex.");
 
           // Create main x and y axis and assign titles and numeric format.
-          // There are two different y axis: 1) home runs and 2) average
-          // batting. In this case data are grouped by handedness (x axis)
     var x = myChart.addMeasureAxis("x", "Year");
           x.title = "Year";
           var y1 = myChart.addMeasureAxis("y", "Carpet");
@@ -100,7 +102,7 @@
           myChart.addLegend(500, 94, 100, 100, "left");
 
           myChart.draw();
-      };*/
+      };
 
     </script>
 <body>
@@ -108,32 +110,22 @@
       <div>Here we present a visual analysis about some parameters related to tennis matches. The first one is the probability of winning a match by rank and sex. The second one is the number of tennis matches by surface and sex along the years.
       </div>
        <p>Please use Chrome browser for a correct visualization</p>
-<!--
-  <script type="text/javascript">
-    // Read probability data and draw the first figure
-       d3.csv("probability_win_by_rank_sex.csv", draw_probability);
-   </script>
-<script type="text/javascript">
-    d3.csv("matches_by_surface_and_sex.csv", matches_line_plot);
-   </script>
-    -->
-<div id="chartContainer">
-      <script src="/lib/d3.v4.3.0.js"></script>
-	  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
-  <script type="text/javascript">
-    var svg = dimple.newSvg("#chartContainer", 590, 400);
-    d3.csv("probability_win_by_rank_sex.csv", function (data) {
-      //data = dimple.filterData(data, "Owner", ["Aperture", "Black Mesa"])
-      var myChart = new dimple.chart(svg, data);
-      myChart.setBounds(60, 30, 505, 305);
-      var x = myChart.addCategoryAxis("x", "Rank");
-      x.addOrderRule("Rank");
-      myChart.addMeasureAxis("y", "M");
-      myChart.addSeries(null, dimple.plot.line);
-      myChart.addLegend(60, 10, 500, 20, "right");
-      myChart.draw();
+
+ <script type="text/javascript">
+   d3.queue()
+   .defer(d3.csv, "probability_win_by_rank_sex.csv")
+   .defer(d3.csv, "matches_by_surface_and_sex.csv")
+   .await(function(error, data1, data2) {
+       if (error) {
+           console.error('Something went wrong: ' + error);
+       }
+       else {
+           draw_figures(data1, data2);
+       }
     });
-  </script>
+   </script>
+
+
 </div>
 </body>
 </html>
