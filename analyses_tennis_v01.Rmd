@@ -108,6 +108,7 @@ by_rank_sex %>%
 ```
 ```{r}
 by_rank_sex %>% select (-W, -L, -T) %>% spread(key = "Sex", value = "P") %>% write_csv("./probabilit_win_by_rank_sex.csv")
+by_rank_sex %>% select (-W, -L, -T) %>%  write_csv("./probability_win_by_rank_sex_v2.csv")
 ```
 
 ```{r}

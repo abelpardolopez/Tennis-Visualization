@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	<!-- Charset and load required libraries -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+  	<!-- Charset and load required libraries
+     With version D3 v5 I was not able to run the code, with v4 is running.
+     -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
     <script src="http://d3js.org/queue.v1.min.js"></script>
+
     <style>
       /* Title */
       h2 {
@@ -22,63 +25,125 @@
 
     <script type="text/javascript">
       "use strict"; // To force the declaration of all variables
-      var margin = 50,
-	      width = 700 - margin,
-          height = 450 - margin
+      let margin = 100,
+	      width = 1100 - margin,
+          height = 600 - margin;
       function draw_figures(data1, data2) {
-         draw_probability(data1);
+        // draw_probability(data1);
+         draw_probability_v2(data1);
          matches_line_plot(data2);
-      };
+      }
+
       function draw_probability(data) {
-          var svg = d3.select("body")
+          let svg = d3.select("body")
             .append("svg")
               .attr("width", width + margin)
               .attr("height", height + margin)
             .append('g')
                 .attr('class','chart');
 
-          var myChart = new dimple.chart(svg, data);
+          let myChart = new dimple.chart(svg, data);
+          myChart.x =  margin;
+          myChart.y = margin;
+          myChart.height = height-margin;
+          myChart.width = width-margin;
 
           // Add centered title
           svg.append("text")
-		        .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
-		        .attr("y", myChart._yPixels() - 20)
-		        .style("text-anchor", "middle")
-		        .style("font-family", "sans-serif")
-		        .style("font-weight", "bold")
-                .style("font-size", "14")
-		        .text("With Higher rank higher propbability of winning the match.");
+              .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
+              .attr("y", myChart._yPixels() + 20)
+              .style("text-anchor", "middle")
+              .style("font-family", "sans-serif")
+              .style("font-weight", "bold")
+              .style("font-size", "14")
+              .text("With Higher rank higher probability of winning the match.");
 
         // Create main x and y axis and assign titles and numeric format
-         var x = myChart.addCategoryAxis("x", "Rank");
+         let x = myChart.addCategoryAxis("x", "Rank");
           x.title = "WTA or ATP Rank";
-          //x.tickFormat = ',d'; //  Integer
-          var y = myChart.addMeasureAxis("y", "M");
-          y.title = "Probability of winning a match";
-          //y.tickFormat = ',.2f'; // Two decimal places
+          x.tickFormat = ',d'; //  Integer
+          let y = myChart.addMeasureAxis("y", "M");
+          y.title = "Men Probability of Win";
+          y.tickFormat = ',.3f'; // Three decimal places
 
-        //  var z = myChart.addMeasureAxis("z", "W");
+         let z = myChart.addMeasureAxis("z", "W");
+         z.title =  "Women Probability of Win";
+         z.tickFormat = ',.3f'; // Three decimal places
 
-          myChart.addSeries("Rank", dimple.plot.line);
-        //  myChart.addSeries("Women probability of Win", dimple.plot.line);
-          //myChart.assignColor("Women probability of Win", "red");
+          myChart.addSeries(["Male probability of Win"], dimple.plot.line, [x, y]);
+          myChart.addSeries("Women probability of Win", dimple.plot.line, [x, z]);
+
+          myChart.assignColor("Women probability of Win", "red");
           myChart.assignColor("Male probability of Win", "blue");
 
-          myChart.addLegend(500, 50, 100, 100, "left");
+          myChart.addLegend(400, 50, 100, 100, "left");
 
           myChart.draw();
-      };
+      }
 
-      /* Plot number of matches for each sufrface type and sex*/
+      function draw_probability_v2(data) {
+          let svg = d3.select("body")
+              .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+              .append('g')
+              .attr('class','chart');
+
+          let myChart = new dimple.chart(svg, data);
+          myChart.x =  margin;
+          myChart.y = margin;
+          myChart.height = height-margin;
+          myChart.width = width-margin;
+
+          // Add centered title
+          svg.append("text")
+              .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
+              .attr("y", myChart._yPixels() - 10)
+              .style("text-anchor", "middle")
+              .style("font-family", "sans-serif")
+              .style("font-weight", "bold")
+              .style("font-size", "14")
+              .text("With Higher rank higher probability of winning the match.");
+
+          // Create main x and y axis and assign titles and numeric format
+          let x = myChart.addCategoryAxis("x", ["Rank", "Sex"]);
+          x.title = "WTA or ATP Rank";
+          x.tickFormat = ',d'; //  Integer
+          x.fontSize="8px";
+          x.addOrderRule("Rank")
+
+          let y = myChart.addMeasureAxis("y", "P");
+          y.title = "Probability of Win";
+          y.tickFormat = ',.3f'; // Three decimal places
+          //y.showPercent = true;
+
+          let z = myChart.addMeasureAxis("y", "T");
+          z.title = "Total matches";
+          z.tickFormat = ',d';
+
+          myChart.addSeries("Sex", dimple.plot.line, [x, y]);
+          myChart.addSeries("Total matches", dimple.plot.bar, [x, z]);
+
+          myChart.addLegend(600, 150, 100, 100, "left");
+
+          myChart.draw();
+      }
+
+      /* Plot number of matches for each surface type and sex*/
       function matches_line_plot(data) {
-          var svg = d3.select("body")
+
+          let svg = d3.select("body")
             .append("svg")
               .attr("width", width + margin)
               .attr("height", height + margin)
             .append('g')
                 .attr('class','chart');
 
-          var myChart = new dimple.chart(svg, data);
+          let myChart = new dimple.chart(svg, data);
+          myChart.x =  margin;
+          myChart.y = margin;
+          myChart.height = height-margin;
+          myChart.width = width-margin;
 
           // Add centered title
           svg.append("text")
@@ -90,42 +155,39 @@
             .style("font-size", "14")
 		        .text("Number of matches by surface type and sex.");
 
-          // Create main x and y axis and assign titles and numeric format.
-    var x = myChart.addMeasureAxis("x", "Year");
+          // Create main x and y axis and assign titles and numeric form
+    let x = myChart.addCategoryAxis("x", "Year");
           x.title = "Year";
-          var y1 = myChart.addMeasureAxis("y", "Carpet");
+          let y1 = myChart.addMeasureAxis("y", "Carpet");
           y1.title = "Number of matches by year with Surface of Carpet";
-          var y2 = myChart.addMeasureAxis("y", "Clay");
+          let y2 = myChart.addMeasureAxis("y", "Clay");
           y2.title = "Number of matches by year with Surface of Clay";
-          y2.tickFormat = ',.0f'; // Integer
+          //y2.tickFormat = ',.0f'; // Integer
 
-          myChart.addLegend(500, 94, 100, 100, "left");
+          myChart.addSeries("Number of matches by year with Surface of Carpet", dimple.plot.line);
+          myChart.addSeries("Number of matches by year with Surface of Clay", dimple.plot.line);
+          myChart.assignColor("Number of matches by year with Surface of Carpet", "red");
+          myChart.assignColor("Number of matches by year with Surface of Clay", "blue");
+          myChart.addLegend(500, 94, 100, 100, "right");
 
           myChart.draw();
-      };
+      }
 
     </script>
 <body>
       <h2>Tennis: Some interesting stats </h2>
       <div>Here we present a visual analysis about some parameters related to tennis matches. The first one is the probability of winning a match by rank and sex. The second one is the number of tennis matches by surface and sex along the years.
       </div>
-       <p>Please use Chrome browser for a correct visualization</p>
+      <p>Please use Chrome browser for a correct visualization</p>
 
- <script type="text/javascript">
-   d3.queue()
-   .defer(d3.csv, "probability_win_by_rank_sex.csv")
-   .defer(d3.csv, "matches_by_surface_and_sex.csv")
-   .await(function(error, data1, data2) {
-       if (error) {
-           console.error('Something went wrong: ' + error);
-       }
-       else {
-           draw_figures(data1, data2);
-       }
-    });
-   </script>
-
-
-</div>
+      <script type="text/javascript">
+       queue()
+        //   .defer(d3.csv, "probability_win_by_rank_sex.csv")
+           .defer(d3.csv, "probability_win_by_rank_sex_v2.csv")
+           .defer(d3.csv, "matches_by_surface_and_sex.csv")
+       .await(function(error, data1, data2) {
+               draw_figures(data1, data2);
+        });
+      </script>
 </body>
 </html>

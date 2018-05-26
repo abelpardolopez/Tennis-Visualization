@@ -8,8 +8,10 @@
 - [Read More than one file to ds3](https://stackoverflow.com/questions/21842384/importing-data-from-multiple-csv-files-in-d3)
 - [Simple Example]()
 - [D3 Doubts](http://www.d3noob.org/2012/12/getting-data.html)
-- [D3]()
-- [Dimple]()
+- [D3](https://d3js.org/)
+- [Dimple](http://dimplejs.org)
+- [Dimple Documentation](https://github.com/PMSI-AlignAlytics/dimple/wiki)
+- [Multi-line series example](https://stackoverflow.com/questions/22914933/dimple-js-multi-series-line-charts)
 - http://dimplejs.org/examples_viewer.html?id=lines_horizontal_stacked
 - [Tennis Data](http://tennis-data.co.uk/alldata.php)
 
