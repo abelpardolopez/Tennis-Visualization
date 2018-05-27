@@ -31,7 +31,8 @@
       function draw_figures(data1, data2) {
         // draw_probability(data1);
          draw_probability_v2(data1);
-         matches_line_plot(data2);
+        // matches_line_plot(data2);
+          matches_line_plot_v2(data2);
       }
 
       function draw_probability(data) {
@@ -158,21 +159,76 @@
           // Create main x and y axis and assign titles and numeric form
     let x = myChart.addCategoryAxis("x", "Year");
           x.title = "Year";
-          let y1 = myChart.addMeasureAxis("y", "Carpet");
+          let y1 = myChart.addMeasureAxis("y", ["Carpet","Sex"]);
+          let y2 = myChart.addMeasureAxis("y", ["Clay","Sex"]);
+          let y3 = myChart.addMeasureAxis("y", ["Grass","Sex"]);
+          let y4 = myChart.addMeasureAxis("y", ["Hard","Sex"]);
+          let y5 = myChart.addMeasureAxis("y", ["Greenset","Sex"]);
           y1.title = "Number of matches by year with Surface of Carpet";
-          let y2 = myChart.addMeasureAxis("y", "Clay");
           y2.title = "Number of matches by year with Surface of Clay";
-          //y2.tickFormat = ',.0f'; // Integer
+          y1.tickFormat = ',d'; // Integer
+          y2.tickFormat = ',d'; // Integer
+          y3.tickFormat = ',d'; // Integer
+          y4.tickFormat = ',d'; // Integer
+          y5.tickFormat = ',d'; // Integer
 
-          myChart.addSeries("Number of matches by year with Surface of Carpet", dimple.plot.line);
-          myChart.addSeries("Number of matches by year with Surface of Clay", dimple.plot.line);
+          myChart.addSeries("Number of matches by year with Surface of Carpet", dimple.plot.line, [x, y1]);
+          myChart.addSeries("Number of matches by year with Surface of Clay", dimple.plot.line, [x, y2]);
+          myChart.addSeries("Number of matches by year with Surface of Grass", dimple.plot.line, [x, y3]);
+          myChart.addSeries("Number of matches by year with Surface of Hard", dimple.plot.line, [x, y4]);
+          myChart.addSeries("Number of matches by year with Surface of Greenset", dimple.plot.line, [x, y5]);
+
           myChart.assignColor("Number of matches by year with Surface of Carpet", "red");
           myChart.assignColor("Number of matches by year with Surface of Clay", "blue");
-          myChart.addLegend(500, 94, 100, 100, "right");
+          myChart.assignColor("Number of matches by year with Surface of Grass", "yellow");
+          myChart.assignColor("Number of matches by year with Surface of Hard", "black");
+          myChart.assignColor("Number of matches by year with Surface of Greenset", "green");
+
+          myChart.addLegend(110, 94, 100, 100, "left");
 
           myChart.draw();
       }
+      function matches_line_plot_v2(data) {
 
+          let svg = d3.select("body")
+              .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+              .append('g')
+              .attr('class','chart');
+
+          let myChart = new dimple.chart(svg, data);
+          myChart.x =  margin;
+          myChart.y = margin;
+          myChart.height = height-margin;
+          myChart.width = width-margin;
+
+          // Add centered title
+          svg.append("text")
+              .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
+              .attr("y", myChart._yPixels() - 20)
+              .style("text-anchor", "middle")
+              .style("font-family", "sans-serif")
+              .style("font-weight", "bold")
+              .style("font-size", "14")
+              .text("Number of matches by surface type and sex.");
+
+          // Create main x and y axis and assign titles and numeric form
+          let x = myChart.addCategoryAxis("x", ["Sex","Year"]);
+          x.addGroupOrderRule(["Sex", "Surface"]);
+          x.title = "Year / Sex";
+          //x.tickFormat = ",s"
+          let y1 = myChart.addMeasureAxis("y", "count");
+          y1.title = "Number of matches by Surface";
+          y1.tickFormat = ",d";
+
+          let s = myChart.addSeries(["Surface"], dimple.plot.line);
+          s.barGap = 0.05;
+
+          myChart.addLegend(110, 94, 100, 100, "right");
+
+          myChart.draw();
+      }
     </script>
 <body>
       <h2>Tennis: Some interesting stats </h2>
@@ -184,7 +240,8 @@
        queue()
         //   .defer(d3.csv, "probability_win_by_rank_sex.csv")
            .defer(d3.csv, "probability_win_by_rank_sex_v2.csv")
-           .defer(d3.csv, "matches_by_surface_and_sex.csv")
+        //   .defer(d3.csv, "matches_by_surface_and_sex.csv")
+           .defer(d3.csv, "matches_by_surface_and_sex_v2.csv")
        .await(function(error, data1, data2) {
                draw_figures(data1, data2);
         });

@@ -108,7 +108,7 @@ by_rank_sex %>%
 ```
 ```{r}
 by_rank_sex %>% select (-W, -L, -T) %>% spread(key = "Sex", value = "P") %>% write_csv("./probabilit_win_by_rank_sex.csv")
-by_rank_sex %>% select (-W, -L, -T) %>%  write_csv("./probability_win_by_rank_sex_v2.csv")
+by_rank_sex %>% select (-W, -L) %>%  filter (Rank < 201) %>% write_csv("./probability_win_by_rank_sex_v2.csv")
 ```
 
 ```{r}
@@ -131,6 +131,10 @@ surfaces <- data %>% select(Sex, Year, Surface) %>% group_by(Sex,  Surface, Year
         spread(key = Surface, value = "count", fill = 0 ) 
 head(surfaces, 20)
 write_csv(surfaces, "./matches_by_surface_and_sex.csv")
+
+surfaces <- data %>% select(Sex, Year, Surface) %>% filter(Year < 2018, Year > 2006) %>% group_by(Sex,  Surface, Year) %>% summarise(count = n()) %>% ungroup() 
+head(surfaces, 20)
+write_csv(surfaces, "./matches_by_surface_and_sex_v2.csv")
 
 ```
 ```{r}
