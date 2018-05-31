@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7c7094c-8bc5-4502-a60d-61dd7e208410" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.RData" beforeDir="false" afterPath="$PROJECT_DIR$/.RData" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/.Rhistory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/console06/INDEX001" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/console06/INDEX001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/sources/prop/6AE40852" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/sources/prop/6AE40852" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/2FE8D63E-analyses_tennis_v01/1/s/chunks.json" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/2FE8D63E-analyses_tennis_v01/1/s/chunks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/2FE8D63E-analyses_tennis_v01/1/s/cx3e0khlvc0sb/000012.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analyses_tennis_v01.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/analyses_tennis_v01.Rmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analyses_tennis_v01.nb.html" beforeDir="false" afterPath="$PROJECT_DIR$/analyses_tennis_v01.nb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tennis_visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/tennis_visualization.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,8 +31,8 @@
       <file leaf-file-name="tennis_visualization.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="221" column="35" selection-start-line="221" selection-start-column="35" selection-end-line="221" selection-end-column="35" />
+            <state relative-caret-position="451">
+              <caret line="227" column="53" selection-start-line="227" selection-start-column="48" selection-end-line="227" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -80,6 +71,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -91,7 +83,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -134,12 +125,13 @@
       <updated>1527332988287</updated>
       <workItem from="1527332994803" duration="19288000" />
       <workItem from="1527441395110" duration="17000" />
-      <workItem from="1527441630268" duration="1684000" />
+      <workItem from="1527441630268" duration="1910000" />
+      <workItem from="1527787143819" duration="918000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20989000" />
+    <option name="totallyTimeSpent" value="22133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
@@ -156,22 +148,22 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39978677" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Designer" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
-      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Maven Projects" order="3" />
     </layout>
   </component>
@@ -187,6 +179,23 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="289">
+            <caret line="17" selection-start-line="17" selection-end-line="17" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3689">
+          <caret line="217" column="50" lean-forward="true" selection-start-line="217" selection-start-column="50" selection-end-line="217" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -248,8 +257,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="221" column="35" selection-start-line="221" selection-start-column="35" selection-end-line="221" selection-end-column="35" />
+        <state relative-caret-position="451">
+          <caret line="227" column="53" selection-start-line="227" selection-start-column="48" selection-end-line="227" selection-end-column="53" />
         </state>
       </provider>
     </entry>
