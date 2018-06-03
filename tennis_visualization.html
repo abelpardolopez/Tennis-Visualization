@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	<!-- Charset and load required libraries
-     With version D3 v5 I was not able to run the code, with v4 is running.
-     -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
-    <script src="http://d3js.org/queue.v1.min.js"></script>
 
+
+    <!-- Load D3 from site
+    With version D3 v5 I was not able to run the code, with v4 is running.
+    -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- Dimple -->
+    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+    <!-- Queue library
+    Allows to load more than data file -->
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+   <!-- CSS Style-->
     <style>
       /* Title */
       h2 {
@@ -22,66 +27,18 @@
       	font-style: italic;
       }
     </style>
-
+   <!-- Scripts -->
     <script type="text/javascript">
       "use strict"; // To force the declaration of all variables
       let margin = 100,
-	      width = 1100 - margin,
-          height = 600 - margin;
+	      width = window.innerWidth - margin,
+          height = 600 - margin; // inner Height is too much. I will put a fixed height of 600
+      //  Main Script
       function draw_figures(data1, data2) {
-        // draw_probability(data1);
-         draw_probability_v2(data1);
-        // matches_line_plot(data2);
-          matches_line_plot_v2(data2);
+           draw_probability_v2(data1);
+           bar_plot(data2);
       }
-
-      function draw_probability(data) {
-          let svg = d3.select("body")
-            .append("svg")
-              .attr("width", width + margin)
-              .attr("height", height + margin)
-            .append('g')
-                .attr('class','chart');
-
-          let myChart = new dimple.chart(svg, data);
-          myChart.x =  margin;
-          myChart.y = margin;
-          myChart.height = height-margin;
-          myChart.width = width-margin;
-
-          // Add centered title
-          svg.append("text")
-              .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
-              .attr("y", myChart._yPixels() + 20)
-              .style("text-anchor", "middle")
-              .style("font-family", "sans-serif")
-              .style("font-weight", "bold")
-              .style("font-size", "14")
-              .text("With Higher rank higher probability of winning the match.");
-
-        // Create main x and y axis and assign titles and numeric format
-         let x = myChart.addCategoryAxis("x", "Rank");
-          x.title = "WTA or ATP Rank";
-          x.tickFormat = ',d'; //  Integer
-          let y = myChart.addMeasureAxis("y", "M");
-          y.title = "Men Probability of Win";
-          y.tickFormat = ',.3f'; // Three decimal places
-
-         let z = myChart.addMeasureAxis("z", "W");
-         z.title =  "Women Probability of Win";
-         z.tickFormat = ',.3f'; // Three decimal places
-
-          myChart.addSeries(["Male probability of Win"], dimple.plot.line, [x, y]);
-          myChart.addSeries("Women probability of Win", dimple.plot.line, [x, z]);
-
-          myChart.assignColor("Women probability of Win", "red");
-          myChart.assignColor("Male probability of Win", "blue");
-
-          myChart.addLegend(400, 50, 100, 100, "left");
-
-          myChart.draw();
-      }
-
+      // Draw probabilities based in rank and sex.
       function draw_probability_v2(data) {
           let svg = d3.select("body")
               .append("svg")
@@ -121,74 +78,19 @@
           let z = myChart.addMeasureAxis("y", "T");
           z.title = "Total matches";
           z.tickFormat = ',d';
+          z.barGap = 0.01;
 
           myChart.addSeries("Sex", dimple.plot.line, [x, y]);
           myChart.addSeries("Total matches", dimple.plot.bar, [x, z]);
 
-          myChart.addLegend(600, 150, 100, 100, "left");
+          myChart.addLegend(width - margin, 120, 100, 100, "left");
 
-          myChart.draw();
+          myChart.draw(1000);
       }
 
-      /* Plot number of matches for each surface type and sex*/
-      function matches_line_plot(data) {
-
-          let svg = d3.select("body")
-            .append("svg")
-              .attr("width", width + margin)
-              .attr("height", height + margin)
-            .append('g')
-                .attr('class','chart');
-
-          let myChart = new dimple.chart(svg, data);
-          myChart.x =  margin;
-          myChart.y = margin;
-          myChart.height = height-margin;
-          myChart.width = width-margin;
-
-          // Add centered title
-          svg.append("text")
-		        .attr("x", myChart._xPixels() + myChart._widthPixels() / 2)
-		        .attr("y", myChart._yPixels() - 20)
-		        .style("text-anchor", "middle")
-		        .style("font-family", "sans-serif")
-		        .style("font-weight", "bold")
-            .style("font-size", "14")
-		        .text("Number of matches by surface type and sex.");
-
-          // Create main x and y axis and assign titles and numeric form
-    let x = myChart.addCategoryAxis("x", "Year");
-          x.title = "Year";
-          let y1 = myChart.addMeasureAxis("y", ["Carpet","Sex"]);
-          let y2 = myChart.addMeasureAxis("y", ["Clay","Sex"]);
-          let y3 = myChart.addMeasureAxis("y", ["Grass","Sex"]);
-          let y4 = myChart.addMeasureAxis("y", ["Hard","Sex"]);
-          let y5 = myChart.addMeasureAxis("y", ["Greenset","Sex"]);
-          y1.title = "Number of matches by year with Surface of Carpet";
-          y2.title = "Number of matches by year with Surface of Clay";
-          y1.tickFormat = ',d'; // Integer
-          y2.tickFormat = ',d'; // Integer
-          y3.tickFormat = ',d'; // Integer
-          y4.tickFormat = ',d'; // Integer
-          y5.tickFormat = ',d'; // Integer
-
-          myChart.addSeries("Number of matches by year with Surface of Carpet", dimple.plot.line, [x, y1]);
-          myChart.addSeries("Number of matches by year with Surface of Clay", dimple.plot.line, [x, y2]);
-          myChart.addSeries("Number of matches by year with Surface of Grass", dimple.plot.line, [x, y3]);
-          myChart.addSeries("Number of matches by year with Surface of Hard", dimple.plot.line, [x, y4]);
-          myChart.addSeries("Number of matches by year with Surface of Greenset", dimple.plot.line, [x, y5]);
-
-          myChart.assignColor("Number of matches by year with Surface of Carpet", "red");
-          myChart.assignColor("Number of matches by year with Surface of Clay", "blue");
-          myChart.assignColor("Number of matches by year with Surface of Grass", "yellow");
-          myChart.assignColor("Number of matches by year with Surface of Hard", "black");
-          myChart.assignColor("Number of matches by year with Surface of Greenset", "green");
-
-          myChart.addLegend(110, 94, 100, 100, "left");
-
-          myChart.draw();
-      }
-      function matches_line_plot_v2(data) {
+      // Plot number of matches for each surface type and sex
+      function bar_plot(data) {
+          let popup = null;
 
           let svg = d3.select("body")
               .append("svg")
@@ -214,21 +116,128 @@
               .text("Number of matches by surface type and sex.");
 
           // Create main x and y axis and assign titles and numeric form
-          let x = myChart.addCategoryAxis("x", ["Sex","Year"]);
+          let x = myChart.addCategoryAxis("x", ["Year","Sex"]);
           x.addGroupOrderRule(["Sex", "Surface"]);
           x.title = "Year / Sex";
-          //x.tickFormat = ",s"
           let y1 = myChart.addMeasureAxis("y", "count");
           y1.title = "Number of matches by Surface";
           y1.tickFormat = ",d";
+          let s = myChart.addSeries(["Surface"], dimple.plot.bar);
+          s.barGap = 0.1;
 
-          let s = myChart.addSeries(["Surface"], dimple.plot.line);
-          s.barGap = 0.05;
+          myChart.addLegend(width, 120, 100, 100, "left");
 
-          myChart.addLegend(110, 94, 100, 100, "right");
+          myChart.draw(1000);
 
-          myChart.draw();
+          // Using the afterDraw callback means this code still works with animated
+          // draws (e.g. myChart.draw(1000)) or storyboards (though an onTick callback should
+          // also be used to clear the text from the previous frame)
+
+          s.afterDraw = function (shape, data) {
+              // Get the shape as a d3 selection
+              let s = d3.select(shape),
+                  rect = {
+                      x: parseFloat(s.attr("x")),
+                      y: parseFloat(s.attr("y")),
+                      width: parseFloat(s.attr("width")),
+                      height: parseFloat(s.attr("height"))
+                  };
+              // Only label bars where the text can fit
+              if (rect.height >= 8) {
+                  // Add a text label for the value
+                  svg.append("text")
+                  // Position in the centre of the shape (vertical position is
+                  // manually set due to cross-browser problems with baseline)
+                      .attr("x", rect.x + rect.width / 2)
+                      .attr("y", rect.y + rect.height / 2 + 3.5)
+                      // Centre align
+                      .style("text-anchor", "middle")
+                      .style("font-size", "10px")
+                      .style("font-family", "sans-serif")
+                      // Make it a little transparent to tone down the black
+                      .style("opacity", 0.6)
+                      // Prevent text cursor on hover and allow tooltips
+                      .style("pointer-events", "none")
+                      // Format the number
+                      .text(d3.format(",.2f")(data.yValue / 1000) + "k");
+              }
+
+          };
+
+          s.shapes.on("mouseover", function (e) {
+             // dimple._showPointTooltip(e, this, myChart, s);
+              // Get the properties of the selected shape
+             let cx = 800*(parseInt(e.x) - 2007) + 50,
+                 cy = e.yValue;
+
+              // Set the size and position of the popup
+              let twidth = 100,
+                  theight = 100,
+                  tx = cx + twidth + 10,
+                  ty =  cy - theight / 2;
+
+              popup = svg.append("g");
+              popup.append('rect').attr("x", tx + 5).attr("y", ty - 5)
+                  .attr("width", 150).attr("height", height)
+                  .attr("rx", 5).attr("ry", 5)
+                  .style("fill", 'white')
+                  .style("stroke", 'blue')
+                  .style("stroke-width", 2);
+              popup.append('text')
+                  .attr('x', x + 10).attr('y', y + 10)
+                  .append('tspan').attr('x', x + 10).attr('y', y + 20)
+                  .text('Sex: ' + e.xField[0])
+                  .style("font-family", "sans-serif")
+                  .style("font-size", 10)
+                  .append('tspan').attr('x', x + 10).attr('y', y + 40)
+                  .text('Year: ' + e.x)
+                  .style("font-family", "sans-serif").style("font-size", 10)
+                  .append('tspan').attr('x', x + 10).attr('y', y + 60)
+                  .text('Surface: ' + e.aggField[0])
+                  .style("font-family", "sans-serif").style("font-size", 10)
+
+          });
+          s.shapes.on("mouseout", function (e) {
+              if (popup != null) {
+                  popup.remote();
+              }
+          });
+          // Handle the hover event - overriding the default behaviour
+       /*   s.addEventHandler("mouseover",  function (e) {
+                  // Get the properties of the selected shape
+                  let cx = parseFloat(e.selectedShape.attr("x")),
+                      cy = parseFloat(e.selectedShape.attr("y"));
+
+                  // Set the size and position of the popup
+                  let width = 150,
+                      height = 70,
+                      x = cx + width + 10 ,
+                      y =  cy - height / 2;
+
+                  let popup = svg.append("g");
+                  popup.append('rect').attr("x", x + 5).attr("y", y - 5)
+                      .attr("width", 150).attr("height", height)
+                      .attr("rx", 5).attr("ry", 5)
+                      .style("fill", 'white')
+                      .style("stroke", 'black')
+                      .style("stroke-width", 2);
+                  popup.append('text')
+                      .attr('x', x + 10).attr('y', y + 10)
+                      .append('tspan').attr('x', x + 10).attr('y', y + 20)
+                      .text('Species: ' + e.seriesValue[0])
+                      .style("font-family", "sans-serif")
+                      .style("font-size", 10)
+                      .append('tspan').attr('x', x + 10).attr('y', y + 40)
+                      .text('Dive to Surface Ratio: ' + Math.round(e.yValue * 10) / 10)
+                      .style("font-family", "sans-serif").style("font-size", 10)
+              }
+          );
+          // Handle the leave event - overriding the default behaviour
+          s.addEventHandler("mouseleave", function (e){
+              svg.selectAll(".tooltip").remove();
+              });*/
       }
+
     </script>
 <body>
       <h2>Tennis: Some interesting stats </h2>
