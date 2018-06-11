@@ -17,6 +17,10 @@
       h2 {
         text-align: center;
       }
+      /* Subtitle */
+      h3 {
+      text-align: center;
+      }
       /* Normal text */
       div {
       	text-align: justify;
@@ -137,7 +141,6 @@
           myChart.draw(1000);
 
           // Using the afterDraw callback means this code still works with animated
-          // draws (e.g. myChart.draw(1000))
           s.afterDraw = function (shape, data) {
               // Get the shape as a d3 selection
               let s = d3.select(shape),
@@ -166,94 +169,21 @@
                       // Format the number
                       .text(d3.format(",.2f")(data.yValue / 1000) + "k");
               }
-
           };
-
-          // Active Event of mouseover
-          s.shapes.on("mouseover", function (e) {
-              // Get the properties of the selected shape
-             let cx = 10*(parseInt(e.x) - 2007) + 50,
-                 cy = e.yValue;
-
-              // Set the size and position of the popup
-              let twidth = 100,
-                  theight = 50,
-                  tx = cx + twidth + 10,
-                  ty =  cy - theight / 2;
-
-              dimple._showBarTooltip(e, this, myChart, s)
-              /*
-              popup = svg.append("g");
-              popup.append('rect').attr("x", tx + 5).attr("y", ty - 5)
-                  .attr("width", 150).attr("height", theight)
-                  .attr("rx", 5).attr("ry", 5)
-                  .style("fill", 'orange')
-                  .style("stroke", 'green')
-                  .style("stroke-width", 2)
-                  .append('text')
-                  .attr('x', x + 10).attr('y', y + 10)
-                  .append('tspan').attr('x', x + 10).attr('y', y + 20)
-                  .text('Sex: ' + e.xField[0])
-                  .style("font-family", "sans-serif")
-                  .style("font-size", 10)
-                  .append('tspan').attr('x', x + 10).attr('y', y + 40)
-                  .text('Year: ' + e.x)
-                  .style("font-family", "sans-serif").style("font-size", 10)
-                  .append('tspan').attr('x', x + 10).attr('y', y + 60)
-                  .text('Surface: ' + e.aggField[0])
-                  .style("font-family", "sans-serif").style("font-size", 10)
-*/
-          });
-          s.shapes.on("mouseout", function (e) {
-              /* svg.selectAll(".tooltip").remove();
-           /* if (popup != null) {
-
-                 popup.remote();
-
-             }*/
-          });
-          // Handle the hover event - overriding the default behaviour
-       /*   s.addEventHandler("mouseover",  function (e) {
-                  // Get the properties of the selected shape
-                  let cx = parseFloat(e.selectedShape.attr("x")),
-                      cy = parseFloat(e.selectedShape.attr("y"));
-
-                  // Set the size and position of the popup
-                  let width = 150,
-                      height = 70,
-                      x = cx + width + 10 ,
-                      y =  cy - height / 2;
-
-                  let popup = svg.append("g");
-                  popup.append('rect').attr("x", x + 5).attr("y", y - 5)
-                      .attr("width", 150).attr("height", height)
-                      .attr("rx", 5).attr("ry", 5)
-                      .style("fill", 'white')
-                      .style("stroke", 'black')
-                      .style("stroke-width", 2);
-                  popup.append('text')
-                      .attr('x', x + 10).attr('y', y + 10)
-                      .append('tspan').attr('x', x + 10).attr('y', y + 20)
-                      .text('Species: ' + e.seriesValue[0])
-                      .style("font-family", "sans-serif")
-                      .style("font-size", 10)
-                      .append('tspan').attr('x', x + 10).attr('y', y + 40)
-                      .text('Dive to Surface Ratio: ' + Math.round(e.yValue * 10) / 10)
-                      .style("font-family", "sans-serif").style("font-size", 10)
-              }
-          );
-          // Handle the leave event - overriding the default behaviour
-          s.addEventHandler("mouseleave", function (e){
-              svg.selectAll(".tooltip").remove();
-              });*/
       }
 
     </script>
 <body>
       <h2>Tennis: Some interesting stats </h2>
-      <div>Here we present a visual analysis about some parameters related to tennis matches. The first one is the probability of winning a match by rank and sex. The second one is the number of tennis matches by surface and sex along the years.
+      <div>Here we present a visual analysis about some parameters related to tennis matches.
       </div>
-      <p>Please use Chrome browser for a correct visualization</p>
+      <h3> Probability of winning a match by rank and sex</h3>.
+      <div> It can be seen than the probability of winning it is correlated with the rank. The variability of this probability wiht lower ranks is due to than the number of matches is smaller then the variability of the probability is higher.
+      </div>
+      <h3>Number of tennis matches by surface and sex along the years</h3>
+      <div>It can be seen some tendencies, such as the number of matches is stable along the years, the number of females matches is higher than the male matches. And than the most of matches are from hard surfaces, followed by clay. And as curiosity it was a surface with 29 matches called greenset.
+      </div>
+
 
       <script type="text/javascript">
        queue()

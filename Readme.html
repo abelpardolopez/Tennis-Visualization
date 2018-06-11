@@ -308,22 +308,65 @@ $(document).ready(function () {
 
 <div id="summary" class="section level1">
 <h1>Summary</h1>
+<p>In this visualization are represented statics about tennis matches, playing surfaces, tennis player ranking, their probability of win and the evolution of the surfaces they are playing. The two que questions are: - Is ATP / WTA ranking is it a good predictor of the probability of win? any differences between men and women?<br />
+- Which percentage of matches are in each surface type? any differences between men and women?</p>
 </div>
-<div id="links" class="section level1">
-<h1>Links</h1>
+<div id="design" class="section level1">
+<h1>Design</h1>
+<ol style="list-style-type: decimal">
+<li>The data have been download from <a href="http://tennis-data.co.uk/alldata.php">tennis-data.co.uk</a>. Downloading have been done in R.<br />
+</li>
+<li>There are plenty of data, data cleaning and ordered has been done in R. It has been eliminated lots of columns. And it has been filtered matches of 5 sets for men, trying to avoid errors in comparison due to the differences in the number of sets.<br />
+</li>
+<li>Some preliminary analyses and visualization have been done also in R, before the interactive visualization.<br />
+</li>
+<li>The first visualization was at the beginning without bars. But it was difficult to understand the increase in variability with higher rank.<br />
+</li>
+<li>The second visualization were lines, but it was difficult to compare the data.<br />
+</li>
+<li>It was not esasy to read the number of matches by category. It has been added the number of matches.</li>
+</ol>
+</div>
+<div id="feedback" class="section level1">
+<h1>Feedback</h1>
+<pre><code> 1. Why are more variability for probability graph when the rank is higher? --&gt; It has been added the bars to show the total number of matches.  
+ 2. Too much ranking, and small graphic --&gt; It has been reduced the maximum ranking, and it has been taken into account the complete window of the broser.
+ 3. The lines of number of matches for each surfaces cannot be compared easily --&gt; Changed to stacked bars.  
+ 4. The number of matches for women and men are very different previous to 2007 --&gt; There was no data of women before 2007, to have a fair comparison it has been removed.  
+ 5. It cannot be seen clearly the values of the bars --&gt; It has been added the number in thousands in the bars.    
+ 6. The names are not clear enough --&gt; It has been put complete names not acronyms.</code></pre>
+</div>
+<div id="resources" class="section level1">
+<h1>Resources</h1>
 <ul>
 <li><a href="https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local">Error loading local data</a></li>
 <li><a href="https://stackoverflow.com/questions/18586921/how-to-launch-html-using-chrome-at-allow-file-access-from-files-mode">Run Local Server</a></li>
-<li><a href="https://bl.ocks.org/mmlak-0109/raw/877da9bba7ef87f4455bb01d077bed31/">Example with buttons</a></li>
 <li><a href="https://stackoverflow.com/questions/21842384/importing-data-from-multiple-csv-files-in-d3">Read More than one file to ds3</a></li>
-<li><a href>Simple Example</a></li>
+<li><a href="http://dimplejs.org/examples_viewer.html?id=bars_vertical_grouped">Simple Example</a></li>
 <li><a href="http://www.d3noob.org/2012/12/getting-data.html">D3 Doubts</a></li>
 <li><a href="https://d3js.org/">D3</a></li>
 <li><a href="http://dimplejs.org">Dimple</a></li>
 <li><a href="https://github.com/PMSI-AlignAlytics/dimple/wiki">Dimple Documentation</a></li>
 <li><a href="https://stackoverflow.com/questions/22914933/dimple-js-multi-series-line-charts">Multi-line series example</a></li>
-<li><a href="http://dimplejs.org/examples_viewer.html?id=lines_horizontal_stacked" class="uri">http://dimplejs.org/examples_viewer.html?id=lines_horizontal_stacked</a></li>
+<li><a href="http://dimplejs.org/examples_viewer.html?id=lines_horizontal_stacked">Horizontal lines</a></li>
 <li><a href="http://tennis-data.co.uk/alldata.php">Tennis Data</a></li>
+<li><a href="http://dimplejs.org/advanced_examples_viewer.html?id=advanced_bar_labels">Bar Labels</a></li>
+</ul>
+</div>
+<div id="files-and-data" class="section level1">
+<h1>Files and Data</h1>
+<p>Data downloaded have been stored in data folder. The final data it is stored in the same folder than the html file. Preprocessing and previsualization have been done in following R files:</p>
+<ul>
+<li>download_read_tennis_data.R<br />
+</li>
+<li>clean_tennis_v01.R</li>
+<li>analyses_tennis_v01.Rmd; and html for just visualization to see the preliminary data exploration.</li>
+</ul>
+<p>The final dat files are:</p>
+<ul>
+<li>probability_win_by_rank_sex_v2.csv<br />
+</li>
+<li>matches_by_surface_and_sex_v2.csv for the second visualizaton</li>
 </ul>
 </div>
 

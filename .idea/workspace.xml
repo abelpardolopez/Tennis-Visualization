@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7c7094c-8bc5-4502-a60d-61dd7e208410" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/.Rhistory" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/console06/INDEX001" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/console06/INDEX001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/rmd-outputs" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/rmd-outputs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/sources/prop/6AE40852" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/sources/prop/6AE40852" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/sources/prop/CED3E5E9" beforeDir="false" afterPath="$PROJECT_DIR$/.Rproj.user/CA63ED0E/sources/prop/CED3E5E9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Make Effective Data Visualization  Baseball_example.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.html" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyses_tennis_v01.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyses_tennis_v01.nb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/d3.v5.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dimple.v2.3.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matches_by_surface_and_sex_v2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/matches_by_surface_and_sex_v2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/probabilit_win_by_rank_sex.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/probability_win_by_rank_sex_v2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/probability_win_by_rank_sex_v2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue.v1.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tennis_visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/tennis_visualization.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -25,19 +33,28 @@
         <entry file="file://$PROJECT_DIR$/Readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="289">
-                <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <first_editor relative-caret-position="259">
+                <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tennis_visualization.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="171" column="6" lean-forward="true" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tennis_visualization.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="205" column="19" selection-start-line="205" selection-start-column="19" selection-end-line="205" selection-end-column="19" />
+            <state relative-caret-position="3111">
+              <caret line="183" column="36" selection-start-line="183" selection-start-column="14" selection-end-line="183" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -50,8 +67,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/tennis_visualization.html" />
+        <option value="$PROJECT_DIR$/Readme.md" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -76,6 +94,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -87,7 +106,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -133,11 +151,13 @@
       <workItem from="1527441630268" duration="1910000" />
       <workItem from="1527787143819" duration="4536000" />
       <workItem from="1527940028967" duration="13124000" />
+      <workItem from="1528560129708" duration="9339000" />
+      <workItem from="1528752499955" duration="588000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38875000" />
+    <option name="totallyTimeSpent" value="48802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -146,13 +166,13 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18020834" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.50104165" side_tool="true" visible="true" weight="0.39978677" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39978677" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49895832" weight="0.39978677" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -181,10 +201,44 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="35" />
+      <option name="time" value="39" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="238">
+            <caret line="14" column="70" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3111">
+          <caret line="183" column="36" selection-start-line="183" selection-start-column="14" selection-end-line="183" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="289">
+            <caret line="17" selection-start-line="17" selection-end-line="17" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3485">
+          <caret line="205" column="19" selection-start-line="205" selection-start-column="19" selection-end-line="205" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -268,20 +322,27 @@
     <entry file="https://d3js.org/d3.v4.min.js">
       <provider selected="true" editor-type-id="httpFileEditor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3111">
+          <caret line="183" column="36" selection-start-line="183" selection-start-column="14" selection-end-line="183" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="289">
-            <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <first_editor relative-caret-position="259">
+            <caret line="25" column="2" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tennis_visualization.html">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="205" column="19" selection-start-line="205" selection-start-column="19" selection-end-line="205" selection-end-column="19" />
+        <state relative-caret-position="229">
+          <caret line="171" column="6" lean-forward="true" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
         </state>
       </provider>
     </entry>
